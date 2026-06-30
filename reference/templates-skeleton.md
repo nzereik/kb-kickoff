@@ -1,7 +1,6 @@
 # Template skeletons (fallback)
 
-Copy these into the new project's `00-meta/templates/` when the live company-knowledge
-templates at `~/Documents/unpublic/src/company-knowledge/00-meta/templates/` are not available.
+Copy these into the new project's `00-meta/templates/`.
 Translate the prose into the chosen output language; keep frontmatter **keys** in English.
 
 The shared frontmatter block (every doc carries it):

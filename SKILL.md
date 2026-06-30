@@ -1,6 +1,6 @@
 ---
 name: kb-kickoff
-description: "Bootstrap a brand-new project with a structured knowledge base (architecture + functional + technical + infrastructure + decisions + design), built from a guided interview, then emit ready-to-run prompts to build and implement the project from that KB. Use when the user wants to start a new project from scratch, scaffold project docs/specs before coding, or set up a knowledge base like the company-knowledge product layout."
+description: "Bootstrap a brand-new project with a structured knowledge base (architecture + functional + technical + infrastructure + decisions + design), built from a guided interview, then emit ready-to-run prompts to build and implement the project from that KB. Use when the user wants to start a new project from scratch, scaffold project docs/specs before coding, or set up a structured product knowledge base."
 trigger: /kb-kickoff
 ---
 
@@ -10,7 +10,7 @@ Turn an idea into a **complete, self-contained project knowledge base** through 
 
 This skill does two things, in order:
 
-1. **Builds the KB** — interviews the user (functional analysis, technical analysis, infrastructure, existing design, key decisions), then writes a populated, cross-linked doc tree using the company-knowledge templates and conventions.
+1. **Builds the KB** — interviews the user (functional analysis, technical analysis, infrastructure, existing design, key decisions), then writes a populated, cross-linked doc tree using the bundled templates and conventions.
 2. **Emits implementation prompts** — writes `PROMPTS.md`, a sequenced set of copy-paste prompts that drive an agent to scaffold and implement the project grounded in the KB.
 
 It does **not** write application code itself. The deliverable is the KB plus the prompts. Stop after that unless the user explicitly asks you to start implementing.
@@ -61,7 +61,7 @@ Generate exactly this tree. It is portable — it does **not** depend on any com
 
 Omit empty branches gracefully: no API → skip `technical/api/`; no design provided → `design/README.md` records "none yet".
 
-## Conventions (match the company-knowledge KB exactly)
+## Conventions
 
 - **Frontmatter on every doc.** Required keys: `title, id, type, status, owner, reviewers, created, updated, review_by, audience, sensitivity, tags, related, ai_usage`. Plus type-specific keys (see templates below). `created`/`updated` = today's date. `review_by` = today + 6 months. `owner` = the user's email if known, else a placeholder.
 - **`id` patterns**: `prod-<slug>` (architecture/product), `fdoc-<product>-<slug>-NNN` (functional), `tspec-<product>-<area>-<slug>-NNN` (technical), `api-<product>-<area>-<slug>-NNN` (api), `adr-NNNN` (decisions).
@@ -72,7 +72,7 @@ Omit empty branches gracefully: no API → skip `technical/api/`; no design prov
 - **Screenshots/assets**: `assets/<slug>-NN-<descriptor>.png`, embedded inline with alt-text + caption.
 - **Language**: write **all** generated docs in the language the user picks in Q0. Keep frontmatter keys in English regardless.
 
-The blank templates to copy into `00-meta/templates/` and to follow when writing each doc are the canonical company-knowledge ones. If `~/Documents/unpublic/src/company-knowledge/00-meta/templates/` exists, copy the files from there verbatim. Otherwise, reconstruct them from the skeletons in `reference/templates-skeleton.md` next to this skill.
+The blank templates to copy into `00-meta/templates/` and to follow when writing each doc are reconstructed from the skeletons in `reference/templates-skeleton.md` next to this skill.
 
 ## What you must do when invoked
 
